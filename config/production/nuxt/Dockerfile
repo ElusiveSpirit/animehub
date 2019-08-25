@@ -1,4 +1,4 @@
-FROM node:8-alpine
+FROM node:12-alpine
 LABEL maintainer="info@rubyfire.ru"
 
 RUN apk update \
@@ -11,7 +11,7 @@ RUN addgroup -S nuxt \
 WORKDIR /app
 
 COPY ./package.json /app/package.json
-COPY ./package-lock.json /app/package-lock.json
+COPY ./yarn.lock /app/yarn.lock
 RUN yarn install
 
 COPY ./config/production/nuxt/start /start

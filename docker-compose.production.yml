@@ -9,7 +9,7 @@ services:
     build:
       context: .
       dockerfile: ./config/production/django/Dockerfile
-    image: sohienwald_production_django
+    image: animehub_production_django
     depends_on:
       - postgres
       - redis
@@ -18,20 +18,19 @@ services:
 
   backend:
     <<: *django
-    image: sohienwald_production_backend
+    image: animehub_production_backend
     restart: always
     expose:
       - "8000"
-    command: /start
-    
+    command: ./manage.py runserver
+
   nuxt:
     build:
       context: .
       dockerfile: ./config/production/nuxt/Dockerfile
-    image: sohienwald_production_nuxt
+    image: animehub_production_nuxt
     env_file:
       - .env
-    restart: always
     expose:
       - "3000"
     command: /start
@@ -63,19 +62,19 @@ services:
 
   celeryworker:
     <<: *django
-    image: sohienwald_production_celeryworker
+    image: animehub_production_celeryworker
     restart: always
     command: /start-celeryworker
 
   celerybeat:
     <<: *django
-    image: sohienwald_production_celerybeat
+    image: animehub_production_celerybeat
     restart: always
     command: /start-celerybeat
 
   flower:
     <<: *django
-    image: sohienwald_production_flower
+    image: animehub_production_flower
     restart: always
     ports:
       - "5555:5555"

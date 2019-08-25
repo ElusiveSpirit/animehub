@@ -6,18 +6,10 @@ ENV DJANGO_ENV dev
 
 RUN pip install pipenv
 
-COPY Pipfile /code/Pipfile
-COPY Pipfile.lock /code/Pipfile.lock
-RUN pipenv install
+COPY Pipfile /Pipfile
+COPY Pipfile.lock /Pipfile.lock
+RUN pipenv install --system --dev --deploy --skip-lock
 
-COPY ../.. /code/
-WORKDIR /code/
-
-RUN pipenv run python manage.py migrate
-
-RUN useradd wagtail
-RUN chown -R wagtail /code
-USER wagtail
+WORKDIR /app
 
 EXPOSE 8000
-CMD exec pipenv run python manage.py runserver

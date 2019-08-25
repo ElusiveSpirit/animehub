@@ -21,7 +21,6 @@ if settings.DEBUG:
     urlpatterns += static(
         settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-    # Add views for testing 404 and 500 templates
     urlpatterns += [
         path('__debug__/', include(debug_toolbar.urls)),
     ]

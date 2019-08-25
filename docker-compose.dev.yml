@@ -1,0 +1,60 @@
+version: '3'
+
+volumes:
+  dev_postgres_data: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./config/dev/django/Dockerfile
+    image: animehub_dev_django
+    volumes:
+      - ./:/app
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - .env
+
+  backend:
+    <<: *django
+    image: animehub_dev_backend
+    expose:
+      - "8000"
+    command: ./manage.py runserver
+
+  nuxt:
+    build:
+      context: .
+      dockerfile: ./config/dev/nuxt/Dockerfile
+    image: animehub_dev_nuxt
+    volumes:
+      - ./:/app
+    env_file:
+      - .env
+    expose:
+      - "3000"
+    command: yarn dev
+
+  postgres:
+    image: postgres:10
+    volumes:
+      - dev_postgres_data:/var/lib/postgresql/data
+    env_file:
+      - .env
+
+  redis:
+    image: redis:3.2
+
+  celeryworker:
+    <<: *django
+    image: animehub_dev_celeryworker
+    restart: always
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *django
+    image: animehub_dev_celerybeat
+    restart: always
+    command: /start-celerybeat
