@@ -37,7 +37,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/vue-lazyload',
-    { src: '@/plugins/vuex-persistedstate', ssr: false },
+    // { src: '@/plugins/vuex-persistedstate', ssr: false },
   ],
   auth: {
     strategies: {
