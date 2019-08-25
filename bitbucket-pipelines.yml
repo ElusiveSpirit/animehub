@@ -1,0 +1,24 @@
+image: python:3.6
+
+options:
+  max-time: 5
+
+pipelines:
+  default: &basic
+    - step:
+        name: Testing
+        caches:
+          - pip
+        script:
+          - pip install pipenv
+          - pipenv install --dev
+          - pipenv run python manage.py test --settings=animehub.settings.test
+        services:
+          - redis
+        deployment: test
+
+
+definitions:
+  services:
+    redis:
+      image: redis

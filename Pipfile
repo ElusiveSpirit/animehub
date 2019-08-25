@@ -1,0 +1,45 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+django-dotenv = "==1.4.1"
+awesome-slugify = "==1.6.5"
+"psycopg2" = "==2.7.3.1"
+boto = "==2.45.0"
+django-storages = "==1.6.5"
+django-redis = "==4.8.0"
+django-cache-url = "==2.0.0"
+awscli = "==1.16.36"
+gunicorn = "*"
+Django = "<2.3,>=2.2"
+Pillow = "==4.0.0"
+djangorestframework = "*"
+celery = "*"
+envparse = "*"
+ratelimit = "*"
+amocrm-api = "*"
+django-phonenumber-field = "*"
+cherrypy = "*"
+paste = "*"
+django-extensions = "==2.1.2"
+collectfast = "*"
+"boto3" = "==1.9.26"
+sentry-sdk = "*"
+requests = "*"
+phonenumbers = "*"
+
+[dev-packages]
+django-debug-toolbar = "==1.10.1"
+wagtail-factories = "==1.0.0"
+model_mommy = "==1.6.0"
+invoke = "*"
+yapf = "*"
+flake8 = "*"
+isort = "*"
+pylint = "*"
+werkzeug = "*"
+
+[requires]
+python_version = "3.6"

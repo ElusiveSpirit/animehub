@@ -1,0 +1,83 @@
+version: '3'
+
+volumes:
+  production_postgres_data: {}
+  production_postgres_data_backups: {}
+
+services:
+  django: &django
+    build:
+      context: .
+      dockerfile: ./config/production/django/Dockerfile
+    image: sohienwald_production_django
+    depends_on:
+      - postgres
+      - redis
+    env_file:
+      - .env
+
+  backend:
+    <<: *django
+    image: sohienwald_production_backend
+    restart: always
+    expose:
+      - "8000"
+    command: /start
+    
+  nuxt:
+    build:
+      context: .
+      dockerfile: ./config/production/nuxt/Dockerfile
+    image: sohienwald_production_nuxt
+    env_file:
+      - .env
+    restart: always
+    expose:
+      - "3000"
+    command: /start
+
+  nginx:
+    build:
+      context: .
+      dockerfile: ./config/production/nginx/Dockerfile
+    links:
+      - backend
+    restart: always
+    ports:
+      - "8080:80"
+
+  postgres:
+    build:
+      context: .
+      dockerfile: ./config/production/postgres/Dockerfile
+    image: animehub_production_postgres
+    volumes:
+      - production_postgres_data:/var/lib/postgresql/data
+      - production_postgres_data_backups:/backups
+    env_file:
+      - .env
+    restart: always
+
+  redis:
+    image: redis:3.2
+
+  celeryworker:
+    <<: *django
+    image: sohienwald_production_celeryworker
+    restart: always
+    command: /start-celeryworker
+
+  celerybeat:
+    <<: *django
+    image: sohienwald_production_celerybeat
+    restart: always
+    command: /start-celerybeat
+
+  flower:
+    <<: *django
+    image: sohienwald_production_flower
+    restart: always
+    ports:
+      - "5555:5555"
+    command: /start-flower
+
