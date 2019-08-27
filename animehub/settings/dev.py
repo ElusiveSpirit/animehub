@@ -11,6 +11,8 @@ MIDDLEWARE += [
     'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
+DATABASES['default']['HOST'] = 'localhost'
+
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '2(k#=3t$95lu7gwssm@$z6q4=xr&_x+a)q@-%u6#+=ngy#rx7='
 

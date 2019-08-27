@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "f4c3bdceed4f8616e351a86c8a594dc1903ccbadfc24bb37446f1be517df1c16"
+            "sha256": "fbe063d9483750480b6e44f4f172a3fe1af75307bf03ed1e61acb96e6545c93e"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -141,6 +141,14 @@
             ],
             "version": "==0.3.9"
         },
+        "dj-database-url": {
+            "hashes": [
+                "sha256:4aeaeb1f573c74835b0686a2b46b85990571159ffc21aa57ecd4d1e1cb334163",
+                "sha256:851785365761ebe4994a921b433062309eb882fedd318e1b0fcecc607ed02da9"
+            ],
+            "index": "pypi",
+            "version": "==0.5.0"
+        },
         "django": {
             "hashes": [
                 "sha256:16a5d54411599780ac9dfe3b9b38f90f785c51259a584e0b24b6f14a7f69aae8",
@@ -278,11 +286,11 @@
         },
         "paste": {
             "hashes": [
-                "sha256:18323f22df5ab6998fdf4c5aa5a9f41d33ff949a87ad7b2ca48e72fbf50fa3e4",
-                "sha256:7add706caca21f315070ca0e714abf0fb014ac597cc5ac02e9ddd135241ac3ed"
+                "sha256:6e9d7f6bc041d114ec5dd5e5b3e696438c0f0c61f0fc5dae52357d7ed3282c5f",
+                "sha256:baca402a089594db0cf1e9aae5c98bcf91588bbbaf848527257e246b960eb72f"
             ],
             "index": "pypi",
-            "version": "==3.1.0"
+            "version": "==3.1.1"
         },
         "phonenumbers": {
             "hashes": [
@@ -510,6 +518,13 @@
                 "sha256:d8179012ec2c620d3791ca6fe2bf7979d979acdbef1fca0bc56b37411db682ed"
             ],
             "version": "==3.7.4"
+        },
+        "ujson": {
+            "hashes": [
+                "sha256:f66073e5506e91d204ab0c614a148d5aa938bdbf104751be66f8ad7a222f5f86"
+            ],
+            "index": "pypi",
+            "version": "==1.35"
         },
         "unidecode": {
             "hashes": [

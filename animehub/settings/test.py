@@ -17,12 +17,7 @@ CACHES = {
 }
 
 # DATABASES
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.test.sqlite3'
-    }
-}
+DATABASES['default']['HOST'] = 'localhost'
 
 if os.environ.get('TESTS_WITHOUT_MIGRATIONS', False):
     MIGRATION_MODULES = {app.split('.')[-1]: None for app in INSTALLED_APPS}

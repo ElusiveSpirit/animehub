@@ -29,6 +29,8 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     # Project apps
     'animehub.base',
+    'animehub.catalog',
+    'animehub.parsers',
     # 3-d parts
     'rest_framework',
     'phonenumber_field',
