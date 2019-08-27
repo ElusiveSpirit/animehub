@@ -8,7 +8,7 @@ from . import api
 
 urlpatterns = [
     url(r'^django-admin/', admin.site.urls),
-    url(r'^api/v2/', include(api)),
+    url(r'^api/v1/', include(api)),
 ]
 
 if settings.DEBUG:

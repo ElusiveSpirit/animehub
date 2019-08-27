@@ -87,7 +87,8 @@ class ShikimoriParser:
                 studios_list.append(obj)
 
         if 'image' in data:
-            image, _ = Image.objects.get_or_create(link=data['image']['original'])
+            link = f"{self._client.BASE_URL}{data['image']['original']}"
+            image, _ = Image.objects.get_or_create(link=link)
         else:
             image = None
 
