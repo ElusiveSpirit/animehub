@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'phonenumber_field',
     'django_extensions',
+    'adminsortable2',
     # Django apps
     'django.contrib.admin',
     'django.contrib.auth',
