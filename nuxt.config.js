@@ -76,13 +76,13 @@ module.exports = {
   ** Axios module configuration
   */
   axios: {
-    prefix: '/server-api',
+    prefix: '/api',
     proxy: true
   },
   proxy: {
-    '/server-api/': {
+    '/api/': {
       target: process.env.PROXY_API_URL || 'http://127.0.0.1:8000/',
-      pathRewrite: {'^/server-api/': '/api/v2/'}
+      pathRewrite: {'^/api/': '/api/v1/'}
     }
   },
   pageTransition: 'fade',

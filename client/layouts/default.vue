@@ -18,7 +18,6 @@
     v-content
       v-container.px-0.py-0(
         fluid
-        fill-height
       )
         nuxt
 </template>
@@ -27,12 +26,12 @@
   export default {
     data: () => ({
       menuItems: [
-        {
-          to: '/catalog',
-          key: 'catalog',
-          text: 'Каталог',
-          external: false,
-        }
+        // {
+        //   to: '/catalog',
+        //   key: 'catalog',
+        //   text: 'Каталог',
+        //   external: false,
+        // }
       ]
     }),
     methods: {
