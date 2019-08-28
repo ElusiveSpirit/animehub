@@ -13,4 +13,4 @@ class Command(BaseCommand):
         client = ShikimoriClient()
         parser = ShikimoriParser(client)
 
-        parser.save_by_id(anime_id)
+        parser.save_anime_by_id(anime_id)

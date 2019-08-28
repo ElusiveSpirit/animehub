@@ -1,4 +1,5 @@
 import logging
+from time import sleep
 
 import requests
 from typing import List, Dict, Any, Optional
@@ -69,7 +70,36 @@ class ShikimoriParser:
         except KeyError:
             logger.warning(f'Studio does not have name field {studio_data}')
 
-    def save_by_id(self, anime_id: int) -> Anime:
+    def save_popular_list(self, pages_count: int = 1, sleep_time: int = 2) -> List[Anime]:
+        """ Создать или обновить список популярных аниме
+
+        :param pages_count: Количество страниц
+        :param sleep_time: Сон в секундах между запросами
+        :return: Список объектов аниме
+        """
+        id_list = []
+        for page in range(1, pages_count + 1):
+            logger.info(f'Fetch page {page}')
+            anime_list = self._client.fetch_list(
+                page=page,
+                order='popularity',
+                season='summer_2019'
+            )
+            for anime in anime_list:
+                id_list.append(anime['id'])
+            sleep(sleep_time)
+
+        anime_list = []
+        for anime_id in id_list:
+            logger.info(f'Fetch anime with id {anime_id}')
+            anime_list.append(self.save_anime_by_id(anime_id))
+            sleep(sleep_time)
+
+        return anime_list
+
+    def save_anime_by_id(self, anime_id: int) -> Anime:
+        """Создать или обновить аниме по id с шикимори
+        """
         data = self._client.fetch_by_id(anime_id)
 
         genres = data.get('genres', [])

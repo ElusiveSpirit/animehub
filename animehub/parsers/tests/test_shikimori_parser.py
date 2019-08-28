@@ -22,7 +22,7 @@ class ShikimoriParserTest(TestCase):
     @patch('animehub.parsers.shikimori.ShikimoriClient.fetch_by_id')
     def test_save_by_id(self, fetch_by_id):
         fetch_by_id.return_value = self.mock_anime_dr_stop
-        anime = self.parser.save_by_id(38691)
+        anime = self.parser.save_anime_by_id(38691)
         self.assertEqual(Anime.objects.count(), 1)
         self.assertEqual(Genre.objects.count(), 3)
         self.assertEqual(Studio.objects.count(), 1)
@@ -34,8 +34,8 @@ class ShikimoriParserTest(TestCase):
     @patch('animehub.parsers.shikimori.ShikimoriClient.fetch_by_id')
     def test_save_by_id_updates_object(self, fetch_by_id):
         fetch_by_id.return_value = self.mock_anime_dr_stop
-        self.parser.save_by_id(38691)
-        anime = self.parser.save_by_id(38691)
+        self.parser.save_anime_by_id(38691)
+        anime = self.parser.save_anime_by_id(38691)
         self.assertEqual(Anime.objects.count(), 1)
         self.assertEqual(Genre.objects.count(), 3)
         self.assertEqual(Studio.objects.count(), 1)
