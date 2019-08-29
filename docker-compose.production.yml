@@ -21,7 +21,7 @@ services:
     image: animehub_production_backend
     restart: always
     expose:
-      - "8000"
+      - "5000"
     command: /start
 
   nuxt:
