@@ -22,7 +22,7 @@ services:
     restart: always
     expose:
       - "8000"
-    command: ./manage.py runserver
+    command: /start
 
   nuxt:
     build:
